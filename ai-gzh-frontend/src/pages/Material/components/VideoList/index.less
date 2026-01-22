@@ -1,0 +1,26 @@
+.video-list-container {
+  .video-card {
+    transition: all 0.3s;
+    position: relative;
+    .delete-button {
+      right: 4px;
+    }
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      .download-button,
+      .delete-button {
+        opacity: 1;
+      }
+    }
+
+    .video-name {
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    .video-time {
+      font-size: 12px;
+    }
+  }
+}

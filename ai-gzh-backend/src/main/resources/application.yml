@@ -1,0 +1,95 @@
+server:
+  address: 0.0.0.0
+  port: 8102
+  servlet:
+    context-path: /api
+    # cookie 30 天过期
+    session:
+      cookie:
+        max-age: 2592000
+
+spring:
+  application:
+    name: wx-mp-manage-backend
+  # 默认 local 环境
+  profiles:
+    active: local
+  # session 配置
+  session:
+    timeout: 2592000
+  # 数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/wx_mp_manage
+    username: root
+    password: 
+
+  # Redis 配置
+  data:
+    redis:
+      database: 1
+      host: localhost
+      port: 6379
+      timeout: 5000
+
+  # 文件上传
+  servlet:
+    multipart:
+      # 大小限制
+      max-file-size: 10MB
+  jackson:
+    time-zone: Asia/Shanghai
+
+  ai:
+    openai:
+      api-key: 
+      base-url: https://api.deepseek.com
+      chat:
+        options:
+          model: deepseek-chat
+          
+          max-tokens: 200
+          temperature: 0.5
+          top-p: 0.9
+          timeout: 4000  # 设置AI调用超时为4秒，确保在微信服务器5秒限制内返回
+      http-client:
+        connect-timeout: 4000  # 连接超时4秒
+        read-timeout: 4000     # 读取超时4秒
+        write-timeout: 4000    # 写入超时4秒
+      retry:
+        enabled: true   # 启用Spring AI内置重试
+        max-attempts: 2  # 最多重试2次
+        initial-interval: 1000  # 初始重试间隔1秒
+        multiplier: 2.0  # 重试间隔倍数
+        max-interval: 4000  # 最大重试间隔4秒
+
+  rabbitmq:
+    host: localhost
+    username: guest
+    password: guest
+
+
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: isDelete # 全局逻辑删除的实体字段名
+      logic-delete-value: 1 # 逻辑已删除值（默认为 1）
+      logic-not-delete-value: 0 # 逻辑未删除值（默认为 0）
+
+springdoc:
+  override-with-generic-response: false
+
+# 详细日志配置
+logging:
+  level:
+    com.yuyuan.wxmp: DEBUG
+    org.springframework.ai: DEBUG
+    org.springframework.web.client: DEBUG
+    org.springframework.ai.openai: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

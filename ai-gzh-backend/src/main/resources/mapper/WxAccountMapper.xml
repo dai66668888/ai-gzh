@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuyuan.wxmp.mapper.WxAccountMapper">
+
+    <resultMap id="BaseResultMap" type="com.yuyuan.wxmp.model.entity.WxAccount">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="appId" column="appId" jdbcType="CHAR"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="verified" column="verified" jdbcType="BIT"/>
+            <result property="secret" column="secret" jdbcType="CHAR"/>
+            <result property="token" column="token" jdbcType="VARCHAR"/>
+            <result property="aesKey" column="aesKey" jdbcType="VARCHAR"/>
+            <result property="userId" column="userId" jdbcType="BIGINT"/>
+            <result property="createTime" column="createTime" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+            <result property="isDelete" column="isDelete" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,appId,name,
+        verified,secret,token,
+        aesKey,userId,createTime,
+        updateTime,isDelete
+    </sql>
+</mapper>

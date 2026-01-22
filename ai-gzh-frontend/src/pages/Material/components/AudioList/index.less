@@ -1,0 +1,75 @@
+.audio-list-container {
+  padding: 16px;
+}
+
+.audio-card {
+  width: 100%;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.audio-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.audio-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.audio-avatar {
+  flex-shrink: 0;
+}
+
+.audio-details {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.audio-name {
+  margin-bottom: 4px !important;
+  font-weight: 500;
+}
+
+.audio-time {
+  font-size: 12px;
+}
+
+.audio-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.play-button {
+  margin-right: 8px;
+}
+
+.audio-list-container .delete-button,
+.audio-list-container .download-button {
+  opacity: 0;
+  position: absolute;
+  right: 36px;
+  top: 4px;
+  transition: opacity 0.3s ease;
+}
+.audio-list-container .download-button {
+  right: 4px;
+}
+.audio-card:hover .delete-button,
+.audio-card:hover .download-button {
+  opacity: 1;
+}
+.audio-control {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 20px;
+}
